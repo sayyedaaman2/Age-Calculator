@@ -1,22 +1,26 @@
-# Frontend Mentor - Age calculator app
+# Frontend Mentor - Age calculator app solution
 
-![Design preview for the Age calculator app coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Age calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
 
-**To do this challenge, you need a decent understanding of HTML, CSS and JavaScript.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to build out this age calculator app and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to: 
+Users should be able to:
 
 - View an age in years, months, and days after submitting a valid date through the form
 - Receive validation errors if:
@@ -29,74 +33,442 @@ Your users should be able to:
 - See hover and focus states for all interactive elements on the page
 - **Bonus**: See the age numbers animate to their final number when the form is submitted
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![Desktop](./screenshot/Desktop.png)
+![Mobile](./screenshot/Mobile.png)
+![required field](./screenshot/requiredField.png)
+![inValid data](./screenshot/inValid.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- Live Site URL: [https://age-calculator.onrender.com/](https://age-calculator.onrender.com/)
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## My process
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+### Built with
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
 
-## Building your project
+### What I learned
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+I learnt how the Age Calculator works.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+To see how you can add code snippets, see below:
 
-## Deploying your project
+```html
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
+    <title>Frontend Mentor | Age calculator app</title>
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <main id="card">
+      <div id="input-container">
+        <div class="input-section">
+          <h1 id="label-day" class="label">day</h1>
+          <input
+            id="input-day"
+            class="input-box"
+            type="text"
+            minlength="1"
+            maxlength="2"
+            name="day"
+            onblur="updateDay()"
+          />
+          <br />
+          <span id="day-error" class="error-box" ></span>
+        </div>
+        <div class="input-section">
+          <h1 id="label-month" class="label">month</h1>
+          <input
+            id="input-month"
+            class="input-box"
+            type="text"
+            minlength="1"
+            maxlength="2"
+            name="month"
+            onblur="updateMonth()"
 
-## Create a custom `README.md`
+          />
+          <br />
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+          <span id="month-error" class="error-box"></span>
+        </div>
+        <div class="input-section">
+          <h1 id="label-year" class="label">year</h1>
+          <input
+            id="input-year"
+            class="input-box"
+            type="text"
+            minlength="4"
+            maxlength="4"
+            name="year"
+            onblur="updateYear()"
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+          />
+          <br />
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+          <span id="year-error" class="error-box"></span>
+        </div>
+      </div>
+      <div id="horizontal-line">
+        <hr />
+        <div id="svg-arrow" onclick="ageCalculate()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="46"
+            height="44"
+            viewBox="0 0 46 44"
+          >
+            <g fill="none" stroke="#FFF" stroke-width="2">
+              <path
+                d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div id="output-conatiner">
+        <h1 class="output-text"><span id="years-output">- -</span>years</h1>
+        <h1 class="output-text"><span id="months-output">- -</span>months</h1>
+        <h1 class="output-text"><span id="days-output">- -</span>days</h1>
+      </div>
+    </main>
+  </body>
 
-## Submitting your solution
+```
+```css
+  @font-face {
+      font-family: Poppins-Regular;
+      src: url(./assets/fonts/Poppins-Regular.ttf);
+  }
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+  @font-face {
+      font-family: Poppins-Bold;
+      src: url(./assets/fonts/Poppins-Bold.ttf);
+  }
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+  @font-face {
+      font-family: Poppins-BoldItalic;
+      src: url(./assets/fonts/Poppins-BoldItalic.ttf);
+  }
 
-## Sharing your solution
+  @font-face {
+      font-family: Poppins-ExtraBold;
+      src: url(./assets/fonts/Poppins-ExtraBold.ttf);
+  }
 
-There are multiple places you can share your solution:
+  @font-face {
+      font-family: Poppins-ExtraBoldItalic;
+      src: url(./assets/fonts/Poppins-ExtraBoldItalic.ttf);
+  }
 
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+  @font-face {
+      font-family: Poppins-Italic;
+      src: url(./assets/fonts/Poppins-Italic.ttf);
+  }
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+  body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background-color: hsl(0, 0%, 94%);
+  }
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
 
-## Got feedback for us?
+  #card {
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+      margin: auto 20rem;
+      background-color: hsl(0, 0%, 100%);
+      padding: 2.8rem;
+      width: 41rem;
+      height: auto;
+      border-radius: 1rem;
+      border-bottom-right-radius: 10rem;
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+  }
 
-**Have fun building!** 🚀
+  #input-container {
+      width: 100%;  
+      display: flex;
+
+    }
+
+  .input-section {
+      margin: 0 12px;
+  }
+
+  .label {
+      font-family: "Poppins-Bold";
+      font-size: 0.7rem;
+      font-weight: 800i;
+      text-transform: uppercase;
+      color: hsl(0, 1%, 44%);
+  }
+
+  .input-box {
+      /* margin-left: 4px ; */
+      width: 8rem;
+      height: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 4px;
+      border: 1px solid hsl(0, 0%, 86%);
+      font-size: 32px;
+      font-family: "Poppins-Bold";
+      font-weight: 700;
+      text-align: left;
+
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+
+  #horizontal-line {
+      width: 100%;
+      height: 3.5rem;  
+      /* background-color: red; */
+      position: relative;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+  }
+
+  #horizontal-line>hr {
+      width: 100%;
+  }
+
+  #svg-arrow {
+      background-color: hsl(259, 100%, 65%);
+      border-radius: 100%;
+      height: 4.5rem;
+      width: 4.5rem;
+      padding:1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 0%;
+  }
+  #svg-arrow:hover{
+    background-color: hsl(0, 0%, 8%);
+  }
+
+  #output-conatiner{
+    box-sizing: border-box;
+  }
+
+  .output-text{
+    font-family: Poppins-ExtraBoldItalic;
+    font-weight: 800i;
+    font-size: 4.9rem;
+  }
+  .output-text > span {
+    color :hsl(259, 100%, 65%)
+  }
+
+  .error-box {
+    display: none;
+    height: 1rem;
+    font-size : 0.7rem;
+    font-family: Poppins-Italic;
+    color :hsl(0, 100%, 67%);
+    font-weight: 400;
+    width: 100%;
+    
+  }
+ 
+  
+```
+```js
+var day = "";
+var month = "";
+var year = "";
+
+function updateDay() {
+  day = Number(document.getElementById("input-day").value);
+  let dayError = document.getElementById("day-error");
+  let dayInput = document.getElementById("input-day");
+  let dayLabel = document.getElementById("label-day");
+
+  if (day == "") {
+    dayError.style.display = "block";
+    dayError.textContent = "This field is required";
+    dayInput.style.border = "1px solid hsl(0, 100%, 67%)";
+    dayLabel.style.color = "hsl(0, 100%, 67%)";
+  } else if (isNaN(day) || 0 > day || day > 31) {
+    dayError.style.display = "block";
+    dayError.textContent = "Must be a valid day";
+    dayInput.style.border = "1px solid hsl(0, 100%, 67%)";
+    dayLabel.style.color = "hsl(0, 100%, 67%)";
+  } else {
+    dayError.style.display = "none";
+    dayInput.style.border = "1px solid hsl(0, 0%, 86%)";
+    dayLabel.style.color = "hsl(0, 1%, 44%)";
+  }
+}
+function updateMonth() {
+  month = Number(document.getElementById("input-month").value);
+  let monthError = document.getElementById("month-error");
+  let monthInput = document.getElementById("input-month");
+  let monthLabel = document.getElementById("label-month");
+
+  if (month == "") {
+    monthError.style.display = "block";
+    monthError.textContent = "This field is required";
+    monthInput.style.border = "1px solid hsl(0, 100%, 67%)";
+    monthLabel.style.color = "hsl(0, 100%, 67%)";
+  } else if (isNaN(month) || 0 > month || month > 12) {
+    monthError.style.display = "block";
+    monthError.textContent = "Must be a valid month";
+    monthInput.style.border = "1px solid hsl(0, 100%, 67%)";
+    monthLabel.style.color = "hsl(0, 100%, 67%)";
+  } else {
+    monthError.style.display = "none";
+    monthInput.style.border = "1px solid hsl(0, 0%, 86%)";
+    monthLabel.style.color = "hsl(0, 1%, 44%)";
+  }
+}
+function updateYear() {
+  year = Number(document.getElementById("input-year").value);
+  let yearError = document.getElementById("year-error");
+  let yearInput = document.getElementById("input-year");
+  let yearLabel = document.getElementById("label-year");
+
+  if (year == "") {
+    yearError.style.display = "block";
+    yearError.textContent = "This field is required";
+    yearInput.style.border = "1px solid hsl(0, 100%, 67%)";
+    yearLabel.style.color = "hsl(0, 100%, 67%)";
+  } else if (
+    isNaN(year) ||
+    new Date().getFullYear() < year ||
+    String(year).length != 4
+  ) {
+    yearError.style.display = "block";
+    yearError.textContent = "Must be a in the past";
+    yearInput.style.border = "1px solid hsl(0, 100%, 67%)";
+    yearLabel.style.color = "hsl(0, 100%, 67%)";
+  } else {
+    yearError.style.display = "none";
+    yearInput.style.border = "1px solid hsl(0, 0%, 86%)";
+    yearLabel.style.color = "hsl(0, 1%, 44%)";
+  }
+}
+
+const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+function ageCalculate() {
+  day = Number(document.getElementById("input-day").value);
+  month = Number(document.getElementById("input-month").value);
+  year = Number(document.getElementById("input-year").value);
+  let today = new Date();
+
+  console.log(`${day}/${month}/${year}`);
+  let inputDate = new Date(year, month, day);
+  let birthMonth, birthDate, birthYear;
+  let birthDetails = {
+    date: inputDate.getDate(),
+    month: inputDate.getMonth() + 1,
+    year: inputDate.getFullYear(),
+  };
+  let currentYear = today.getFullYear();
+  let currentMonth = today.getMonth() + 1;
+  let currentDate = today.getDate();
+
+
+  leapChecker(currentYear);
+
+  if (
+    birthDetails.year > currentYear ||
+    (birthDetails.month > currentMonth && birthDetails.year == currentYear) ||
+    (birthDetails.date > currentDate &&
+      birthDetails.month == currentMonth &&
+      birthDetails.year == currentYear)
+  ) {
+    alert("Not Born Yet");
+    displayResult("- -", "- -", "- -");
+    return;
+  }
+
+  birthYear = currentYear - birthDetails.year;
+  console.log(birthYear)
+  if (currentMonth >= birthDetails.month) {
+    birthMonth = currentMonth - birthDetails.month;
+  } else {
+    birthYear--;
+    birthMonth = 12 + (currentMonth - birthDetails.month);
+  }
+
+  if (currentDate >= birthDetails.date) {
+    birthDate = currentDate - birthDetails.date;
+  } else {
+    let days = months[currentMonth - 1];
+    birthDate = days + currentDate - birthDetails.date;
+    if (birthMonth < 0) {
+      birthMonth = 11;
+      birthYear--;
+    }
+  }
+  displayResult(birthDate, birthMonth, birthYear);
+}
+
+function displayResult(bDate, bMonth, bYear) {
+  document.getElementById("years-output").textContent = bYear;
+  document.getElementById("months-output").textContent = bMonth;
+  document.getElementById("days-output").textContent = bDate;
+}
+
+function leapChecker(year) {
+  if (year % 4 == 0 || (year % 100 == 0 && year % 400 == 0)) {
+    months[1] = 29;
+  } else {
+    months[1] = 28;
+  }
+}
+
+```
+
+
+
+### Useful resources
+
+- [Calculator.net](https://www.calculator.net/) - This helped me for Formula of the age calculator.
+
+
+## Author
+
+- Website - [Add your name here](https://www.your-site.com)
+- Frontend Mentor - [@sayyedaaman2](https://www.frontendmentor.io/profile/sayyedaaman2)
+- Twitter - [@SayyedAaman](https://www.twitter.com/SayyedAaman)
+
+
