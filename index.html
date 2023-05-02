@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
+    <title>Frontend Mentor | Age calculator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <main id="card">
+      <div id="input-container">
+        <div class="input-section">
+          <h1 id="label-day" class="label">day</h1>
+          <input
+            id="input-day"
+            class="input-box"
+            type="text"
+            minlength="1"
+            maxlength="2"
+            name="day"
+            onblur="updateDay()"
+          />
+          <br />
+          <span id="day-error" class="error-box" ></span>
+        </div>
+        <div class="input-section">
+          <h1 id="label-month" class="label">month</h1>
+          <input
+            id="input-month"
+            class="input-box"
+            type="text"
+            minlength="1"
+            maxlength="2"
+            name="month"
+            onblur="updateMonth()"
+
+          />
+          <br />
+
+          <span id="month-error" class="error-box"></span>
+        </div>
+        <div class="input-section">
+          <h1 id="label-year" class="label">year</h1>
+          <input
+            id="input-year"
+            class="input-box"
+            type="text"
+            minlength="4"
+            maxlength="4"
+            name="year"
+            onblur="updateYear()"
+
+          />
+          <br />
+
+          <span id="year-error" class="error-box"></span>
+        </div>
+      </div>
+      <div id="horizontal-line">
+        <hr />
+        <div id="svg-arrow" onclick="ageCalculate()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="46"
+            height="44"
+            viewBox="0 0 46 44"
+          >
+            <g fill="none" stroke="#FFF" stroke-width="2">
+              <path
+                d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div id="output-conatiner">
+        <h1 class="output-text"><span id="years-output">- -</span>years</h1>
+        <h1 class="output-text"><span id="months-output">- -</span>months</h1>
+        <h1 class="output-text"><span id="days-output">- -</span>days</h1>
+      </div>
+    </main>
+  </body>
+</html>
